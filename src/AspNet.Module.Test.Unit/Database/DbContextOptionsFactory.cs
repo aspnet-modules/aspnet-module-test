@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
@@ -17,11 +18,11 @@ public static class DbContextOptionsFactory
         return dbContextBuilder;
     }
 
-    public static DbContextOptionsBuilder<TDbContext> CreateInPostgresOptions<TDbContext>(string connStr)
+    public static DbContextOptionsBuilder<TDbContext> CreateInPostgresOptions<TDbContext>(DbDataSource dataSource)
         where TDbContext : DbContext
     {
         var dbContextBuilder = new DbContextOptionsBuilder<TDbContext>();
-        dbContextBuilder.UseNpgsql(connStr);
+        dbContextBuilder.UseNpgsql(dataSource);
         return dbContextBuilder;
     }
 }

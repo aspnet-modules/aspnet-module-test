@@ -15,21 +15,13 @@ public class XUnitLoggerFactory : ILoggerFactory
         _provider = new XUnitLoggerProvider(_testOutputHelper);
     }
 
-    public void Dispose()
-    {
-        _provider?.Dispose();
-    }
+    public void Dispose() => _provider?.Dispose();
 
-    public ILogger CreateLogger(string categoryName)
-    {
-        return _provider?.CreateLogger(categoryName) ??
-               new XunitLogger<XUnitLoggerFactory>(_testOutputHelper, categoryName);
-    }
+    public void AddProvider(ILoggerProvider provider) => _provider = provider;
 
-    public void AddProvider(ILoggerProvider provider)
-    {
-        _provider = provider;
-    }
+    public ILogger CreateLogger(string categoryName) =>
+        _provider?.CreateLogger(categoryName) ??
+        new XunitLogger<XUnitLoggerFactory>(_testOutputHelper, categoryName);
 
 
     private class XUnitLoggerProvider : ILoggerProvider
@@ -45,9 +37,7 @@ public class XUnitLoggerFactory : ILoggerFactory
         {
         }
 
-        public ILogger CreateLogger(string categoryName)
-        {
-            return new XunitLogger<XUnitLoggerProvider>(_testOutputHelper, categoryName);
-        }
+        public ILogger CreateLogger(string categoryName) =>
+            new XunitLogger<XUnitLoggerProvider>(_testOutputHelper, categoryName);
     }
 }

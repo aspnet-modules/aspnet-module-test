@@ -5,12 +5,6 @@ namespace AspNet.Module.Test.Extensions;
 
 public static class PersonExtensions
 {
-    public static string MiddleName(this Person person, Name.Gender gender) =>
-        Data.MiddleNameFor(person.Random, gender);
-
-    public static string MiddleName(this Name name, Name.Gender gender) =>
-        Data.MiddleNameFor(name.Random, gender);
-
     public static class Data
     {
         public static readonly string[] InnList =
@@ -26,18 +20,18 @@ public static class PersonExtensions
             "19557237212"
         };
 
-        private static readonly string[] MaleMiddleNamesList =
-        {
-            "Петрович",
-            "Александрович",
-            "Викторович"
-        };
-
         private static readonly string[] FemaleMiddleNamesList =
         {
             "Петровна",
             "Александровна",
             "Викторовна"
+        };
+
+        private static readonly string[] MaleMiddleNamesList =
+        {
+            "Петрович",
+            "Александрович",
+            "Викторович"
         };
 
         public static string MiddleNameFor(Randomizer randomizer, Name.Gender gender) =>
@@ -48,4 +42,10 @@ public static class PersonExtensions
                 _ => throw new ArgumentOutOfRangeException(nameof(gender), gender, null)
             };
     }
+
+    public static string MiddleName(this Person person, Name.Gender gender) =>
+        Data.MiddleNameFor(person.Random, gender);
+
+    public static string MiddleName(this Name name, Name.Gender gender) =>
+        Data.MiddleNameFor(name.Random, gender);
 }

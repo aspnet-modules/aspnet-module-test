@@ -3,6 +3,7 @@ using AspNet.Module.Test.Unit.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 
 namespace AspNet.Module.Test.Unit;
 
@@ -43,6 +44,10 @@ public class DbUnitTestFixture<TDbContext> : ConfigUnitTestFixture
     protected virtual async Task ConfigureDatabase(TDbContext dbContext) =>
         await dbContext.Database.EnsureCreatedAsync();
 
+    protected virtual void ConfigureDataSource(NpgsqlDataSourceBuilder builder)
+    {
+    }
+
     protected virtual void ConfigureDbContextOptionsBuilder(DbContextOptionsBuilder<TDbContext> builder)
     {
         builder.UseSnakeCaseNamingConvention();
@@ -52,7 +57,9 @@ public class DbUnitTestFixture<TDbContext> : ConfigUnitTestFixture
 
     protected virtual DbContextOptions<TDbContext> CreateDbContextOptions()
     {
-        var optionsBuilder = DbContextOptionsFactory.CreateInPostgresOptions<TDbContext>(DbConnStr);
+        var dataSourceBuilder = new NpgsqlDataSourceBuilder(DbConnStr);
+        ConfigureDataSource(dataSourceBuilder);
+        var optionsBuilder = DbContextOptionsFactory.CreateInPostgresOptions<TDbContext>(dataSourceBuilder.Build());
         ConfigureDbContextOptionsBuilder(optionsBuilder);
 
         return optionsBuilder.Options;

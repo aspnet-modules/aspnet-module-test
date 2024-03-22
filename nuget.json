@@ -1,8 +1,8 @@
 {
-    "src": "./src",
-    "packages": {
-        "AspNet.Module.Test.Abstractions": true,
-        "AspNet.Module.Test.Unit": true,
-        "AspNet.Module.Test.Int": true
-    }
+  "src": "./src",
+  "packages": {
+    "AspNet.Module.Test.Abstractions": true,
+    "AspNet.Module.Test.Unit": true,
+    "AspNet.Module.Test.Int": true
+  }
 }
