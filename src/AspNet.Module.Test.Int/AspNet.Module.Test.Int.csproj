@@ -12,13 +12,18 @@
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <PackageId>AspNet.Module.Test.Int</PackageId>
-        <Version>3.0.0</Version>
+        <Version>3.0.1</Version>
         <Authors>kvandake</Authors>
         <Company>kvandake</Company>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/aspnet-modules/aspnet-module-test</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/aspnet-modules/aspnet-module-test</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AspNet.Module.Test.Abstractions" Version="3.0.0"/>
+        <PackageReference Include="AspNet.Module.Test.Abstractions" Version="3.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
         <PackageReference Include="Npgsql" Version="10.0.0" />
@@ -29,6 +34,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AspNet.Module.Test.Abstractions\AspNet.Module.Test.Abstractions.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="/">
+            <Link>README.md</Link>
+        </None>
     </ItemGroup>
 
 </Project>
