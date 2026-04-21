@@ -12,7 +12,7 @@
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <PackageId>AspNet.Module.Test.Int</PackageId>
-        <Version>3.0.1</Version>
+        <Version>3.0.2</Version>
         <Authors>kvandake</Authors>
         <Company>kvandake</Company>
         <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -23,10 +23,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AspNet.Module.Test.Abstractions" Version="3.0.1"/>
+        <PackageReference Include="AspNet.Module.Test.Abstractions" Version="3.0.2"/>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
-        <PackageReference Include="Npgsql" Version="10.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.6" />
+        <PackageReference Include="Npgsql" Version="10.0.2" />
         <PackageReference Include="Refit" Version="9.0.2" />
         <PackageReference Include="RichardSzalay.MockHttp" Version="7.0.0"/>
         <PackageReference Include="xunit.extensibility.core" Version="2.9.3" />
